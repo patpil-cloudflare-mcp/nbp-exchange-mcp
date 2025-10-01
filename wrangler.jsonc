@@ -1,0 +1,40 @@
+/**
+ * Cloudflare Workers configuration for NBP Exchange MCP Server
+ *
+ * Note: Even though this is a STATELESS MCP server (we don't use state management),
+ * McpAgent still requires Durable Objects configuration for the MCP protocol handling.
+ *
+ * For more details on Wrangler configuration:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nbp-exchange-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-03-10",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "migrations": [
+    {
+      "new_sqlite_classes": ["NbpMCP"],
+      "tag": "v1"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "NbpMCP",
+        "name": "MCP_OBJECT"
+      }
+    ]
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  "dev": {
+    "port": 8787
+  }
+}

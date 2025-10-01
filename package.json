@@ -1,0 +1,23 @@
+{
+  "name": "nbp-exchange-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Polish National Bank (NBP) exchange rates",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "type-check": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^0.0.11",
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "agents": "^0.2.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250101.0",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.40.1"
+  }
+}
